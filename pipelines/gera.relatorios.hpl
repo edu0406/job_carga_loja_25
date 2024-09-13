@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>gera.relatorios</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2024/05/22 10:27:35.049</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2024/05/22 10:27:35.049</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Comandos infoEstoque</from>
+      <to>Replace in string</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string</from>
+      <to>Execute a process Python</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Comandos infoEstoqueAlerta</from>
+      <to>Replace in string 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string 2</from>
+      <to>Execute a process Python 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Comandos infoProdutividadeVendedores</from>
+      <to>Replace in string 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string 3</from>
+      <to>Execute a process Python 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Comandos infoVendas.py</from>
+      <to>Replace in string 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string 4</from>
+      <to>Execute a process Python 4</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Comandos infoEstoque</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <data>
+      <line>
+        <item>python PROJECT_HOME\files\infoEstoque.py PROJECT_HOME\files\result_files</item>
+      </line>
+    </data>
+    <fields>
+      <field>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <name>comandos</name>
+        <type>String</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>128</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Comandos infoEstoqueAlerta</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <data>
+      <line>
+        <item>python PROJECT_HOME\files\infoEstoqueAlerta.py PROJECT_HOME\files\result_files</item>
+      </line>
+    </data>
+    <fields>
+      <field>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <name>comandos</name>
+        <type>String</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Comandos infoProdutividadeVendedores</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <data>
+      <line>
+        <item>python PROJECT_HOME\files\infoProdutividadeVendedores.py PROJECT_HOME\files\result_files</item>
+      </line>
+    </data>
+    <fields>
+      <field>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <name>comandos</name>
+        <type>String</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>288</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Comandos infoVendas.py</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <data>
+      <line>
+        <item>python PROJECT_HOME\files\infoVendas.py PROJECT_HOME\files\result_files</item>
+      </line>
+    </data>
+    <fields>
+      <field>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+        <name>comandos</name>
+        <type>String</type>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Execute a process Python</name>
+    <type>ExecProcess</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <argumentFields>
+</argumentFields>
+    <argumentsInFields>N</argumentsInFields>
+    <errorfieldname>Error output</errorfieldname>
+    <exitvaluefieldname>Exit value</exitvaluefieldname>
+    <failwhennotsuccess>N</failwhennotsuccess>
+    <outputlinedelimiter/>
+    <processfield>comandos</processfield>
+    <resultfieldname>Result output</resultfieldname>
+    <attributes/>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>128</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Execute a process Python 2</name>
+    <type>ExecProcess</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <argumentFields>
+</argumentFields>
+    <argumentsInFields>N</argumentsInFields>
+    <errorfieldname>Error output</errorfieldname>
+    <exitvaluefieldname>Exit value</exitvaluefieldname>
+    <failwhennotsuccess>N</failwhennotsuccess>
+    <outputlinedelimiter/>
+    <processfield>comandos</processfield>
+    <resultfieldname>Result output</resultfieldname>
+    <attributes/>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Execute a process Python 3</name>
+    <type>ExecProcess</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <argumentFields>
+</argumentFields>
+    <argumentsInFields>N</argumentsInFields>
+    <errorfieldname>Error output</errorfieldname>
+    <exitvaluefieldname>Exit value</exitvaluefieldname>
+    <failwhennotsuccess>N</failwhennotsuccess>
+    <outputlinedelimiter/>
+    <processfield>comandos</processfield>
+    <resultfieldname>Result output</resultfieldname>
+    <attributes/>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>288</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Execute a process Python 4</name>
+    <type>ExecProcess</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <argumentFields>
+</argumentFields>
+    <argumentsInFields>N</argumentsInFields>
+    <errorfieldname>Error output</errorfieldname>
+    <exitvaluefieldname>Exit value</exitvaluefieldname>
+    <failwhennotsuccess>N</failwhennotsuccess>
+    <outputlinedelimiter/>
+    <processfield>comandos</processfield>
+    <resultfieldname>Result output</resultfieldname>
+    <attributes/>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <case_sensitive>N</case_sensitive>
+        <in_stream_name>comandos</in_stream_name>
+        <is_unicode>N</is_unicode>
+        <replace_by_string>${PROJECT_HOME}</replace_by_string>
+        <replace_string>PROJECT_HOME</replace_string>
+        <set_empty_string>N</set_empty_string>
+        <use_regex>N</use_regex>
+        <whole_word>N</whole_word>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>128</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Replace in string 2</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <case_sensitive>N</case_sensitive>
+        <in_stream_name>comandos</in_stream_name>
+        <is_unicode>N</is_unicode>
+        <replace_by_string>${PROJECT_HOME}</replace_by_string>
+        <replace_string>PROJECT_HOME</replace_string>
+        <set_empty_string>N</set_empty_string>
+        <use_regex>N</use_regex>
+        <whole_word>N</whole_word>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Replace in string 3</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <case_sensitive>N</case_sensitive>
+        <in_stream_name>comandos</in_stream_name>
+        <is_unicode>N</is_unicode>
+        <replace_by_string>${PROJECT_HOME}</replace_by_string>
+        <replace_string>PROJECT_HOME</replace_string>
+        <set_empty_string>N</set_empty_string>
+        <use_regex>N</use_regex>
+        <whole_word>N</whole_word>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>288</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Replace in string 4</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <case_sensitive>N</case_sensitive>
+        <in_stream_name>comandos</in_stream_name>
+        <is_unicode>N</is_unicode>
+        <replace_by_string>${PROJECT_HOME}</replace_by_string>
+        <replace_string>PROJECT_HOME</replace_string>
+        <set_empty_string>N</set_empty_string>
+        <use_regex>N</use_regex>
+        <whole_word>N</whole_word>
+      </field>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>368</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>
